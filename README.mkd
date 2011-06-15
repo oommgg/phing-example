@@ -1,0 +1,8 @@
+# Usage
+
+phing
+
+phing clean
+
+phing ssh
+
