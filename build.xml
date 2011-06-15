@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<project name="FooBar" default="dist" basedir=".">
+    <target name="prepare">
+        <echo msg="Preparing build..." />
+        <mkdir dir="./build" />
+    </target>
+    <target name="build" depends="prepare">
+        <echo>Building...</echo>
+        <copy file="/var/www/html/test.php" todir="./build/"/>
+    </target>
+    <target name="dist" depends="build">
+        <echo message="Creating archive..." />
+        <tar destfile="./build/test.tar.gz" compression="gzip">
+            <fileset dir="/var/www/html/">
+                <include name="test.php"/>
+            </fileset>
+        </tar>
+    </target>
+    <target name="ssh">
+        <echo message="SSH..."/>
+        <ssh username="newcasino" password="t 2841u04" host="newcasino" command="ls" />
+    </target>
+    <target name="clean">
+        <echo msg="Cleaning up..."/>
+        <delete dir="./build/" includeemptydirs="true" verbose="true" failonerror="true"/>
+    </target>
+</project>
+
